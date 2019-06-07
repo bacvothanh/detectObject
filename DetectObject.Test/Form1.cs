@@ -60,16 +60,6 @@ namespace DetectObject.Test
                 pictureBox1.Image = image;
             }
         }
-        
-
-        public static byte[] ImageToByte2(Image img)
-        {
-            using (var stream = new MemoryStream())
-            {
-                img.Save(stream, ImageFormat.Png);
-                return stream.ToArray();
-            }
-        }
 
         private void btnOpenVideo_Click(object sender, EventArgs e)
         {
@@ -102,16 +92,29 @@ namespace DetectObject.Test
             this.Cursor = Cursors.Default;
         }
 
+        private DateTime _flagTime = DateTime.Now;
+        private RectangleF[] _previousRectangleFs;
+        private const int delayTime = 4000;
+
         private void VideoSourcePlayer_NewFrame(object sender, ref Bitmap image)
         {
+            if (DateTime.Now.Subtract(_flagTime).TotalMilliseconds < delayTime && _previousRectangleFs != null)
+            {
+                var graphic = Graphics.FromImage(image);
+                graphic.DrawRectangles(new Pen(Brushes.Red, 5), _previousRectangleFs);
+
+                return;
+            }
+
             using (var ms = new MemoryStream())
             {
+                _flagTime = DateTime.Now;
                 image.Save(ms, ImageFormat.Png);
                 var items = yoloWrapper.Detect(ms.ToArray());
 
                 var graphic = Graphics.FromImage(image);
-                var rectangleFs = items.Select(x => new RectangleF(x.X, x.Y, x.Width, x.Height)).ToArray();
-                graphic.DrawRectangles(new Pen(Brushes.Red, 5), rectangleFs);
+                _previousRectangleFs = items.Select(x => new RectangleF(x.X, x.Y, x.Width, x.Height)).ToArray();
+                graphic.DrawRectangles(new Pen(Brushes.Red, 5), _previousRectangleFs);
             }
         }
 
