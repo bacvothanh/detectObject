@@ -24,9 +24,9 @@ namespace DetectObject.Test
         {
             InitializeComponent();
 
-            var configurationDetector = new ConfigurationDetector();
-            var config = configurationDetector.Detect();
-            yoloWrapper = new YoloWrapper(config);
+            //var configurationDetector = new ConfigurationDetector();
+            //var config = configurationDetector.Detect();
+            yoloWrapper = new YoloWrapper("yolov3.cfg", "yolov3.weights", "coco.names");
         }
 
         private void button1_Click(object sender, EventArgs e)
