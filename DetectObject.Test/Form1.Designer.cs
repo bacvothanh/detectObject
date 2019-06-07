@@ -41,6 +41,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnOpenVideo = new System.Windows.Forms.Button();
+            this.videoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yoloItemBindingSource)).BeginInit();
@@ -143,11 +144,21 @@
             this.btnOpenVideo.UseVisualStyleBackColor = true;
             this.btnOpenVideo.Click += new System.EventHandler(this.btnOpenVideo_Click);
             // 
+            // videoSourcePlayer
+            // 
+            this.videoSourcePlayer.Location = new System.Drawing.Point(12, 12);
+            this.videoSourcePlayer.Name = "videoSourcePlayer";
+            this.videoSourcePlayer.Size = new System.Drawing.Size(593, 292);
+            this.videoSourcePlayer.TabIndex = 5;
+            this.videoSourcePlayer.Text = "videoSourcePlayer1";
+            this.videoSourcePlayer.VideoSource = null;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.videoSourcePlayer);
             this.Controls.Add(this.btnOpenVideo);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -155,6 +166,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.yoloItemBindingSource)).EndInit();
@@ -176,6 +188,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn heightDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource yoloItemBindingSource;
         private System.Windows.Forms.Button btnOpenVideo;
+        private AForge.Controls.VideoSourcePlayer videoSourcePlayer;
     }
 }
 
