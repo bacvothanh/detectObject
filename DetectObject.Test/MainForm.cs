@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using AForge.Video;
 using AForge.Video.DirectShow;
@@ -16,17 +11,19 @@ using Alturos.Yolo;
 
 namespace DetectObject.Test
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        private YoloWrapper yoloWrapper;
+        private readonly YoloWrapper yoloWrapper;
+        private readonly Stopwatch _detectStopwatch;
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
 
             //var configurationDetector = new ConfigurationDetector();
             //var config = configurationDetector.Detect();
             yoloWrapper = new YoloWrapper("yolov3.cfg", "yolov3.weights", "coco.names");
+            _detectStopwatch = new Stopwatch();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -106,6 +103,7 @@ namespace DetectObject.Test
                 return;
             }
 
+            _detectStopwatch.Start();
             using (var ms = new MemoryStream())
             {
                 _flagTime = DateTime.Now;
@@ -116,6 +114,10 @@ namespace DetectObject.Test
                 _previousRectangleFs = items.Select(x => new RectangleF(x.X, x.Y, x.Width, x.Height)).ToArray();
                 graphic.DrawRectangles(new Pen(Brushes.Red, 5), _previousRectangleFs);
             }
+
+            _detectStopwatch.Stop();
+            ThreadHelper.SetText(this,lbDetectTime, $"Detect time: {_detectStopwatch.ElapsedMilliseconds}ms");
+            _detectStopwatch.Reset();
         }
 
         // Close video source if it is running
@@ -145,6 +147,11 @@ namespace DetectObject.Test
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             CloseCurrentVideoSource();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            lbDetectTime.Text = string.Empty;
         }
     }
 }

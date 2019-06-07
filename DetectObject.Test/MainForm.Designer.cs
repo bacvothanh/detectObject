@@ -1,6 +1,6 @@
 ﻿namespace DetectObject.Test
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -42,6 +42,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnOpenVideo = new System.Windows.Forms.Button();
             this.videoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
+            this.lbDetectTime = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yoloItemBindingSource)).BeginInit();
@@ -153,11 +154,21 @@
             this.videoSourcePlayer.Text = "videoSourcePlayer1";
             this.videoSourcePlayer.VideoSource = null;
             // 
+            // lbDetectTime
+            // 
+            this.lbDetectTime.AutoSize = true;
+            this.lbDetectTime.Location = new System.Drawing.Point(637, 218);
+            this.lbDetectTime.Name = "lbDetectTime";
+            this.lbDetectTime.Size = new System.Drawing.Size(91, 17);
+            this.lbDetectTime.TabIndex = 6;
+            this.lbDetectTime.Text = "lbDetectTime";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbDetectTime);
             this.Controls.Add(this.videoSourcePlayer);
             this.Controls.Add(this.btnOpenVideo);
             this.Controls.Add(this.button2);
@@ -167,10 +178,12 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.yoloItemBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -189,6 +202,7 @@
         private System.Windows.Forms.BindingSource yoloItemBindingSource;
         private System.Windows.Forms.Button btnOpenVideo;
         private AForge.Controls.VideoSourcePlayer videoSourcePlayer;
+        private System.Windows.Forms.Label lbDetectTime;
     }
 }
 
