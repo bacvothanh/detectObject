@@ -43,6 +43,7 @@
             this.btnOpenVideo = new System.Windows.Forms.Button();
             this.videoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
             this.lbDetectTime = new System.Windows.Forms.Label();
+            this.btnOpenVideoFile = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yoloItemBindingSource)).BeginInit();
@@ -163,19 +164,30 @@
             this.lbDetectTime.TabIndex = 6;
             this.lbDetectTime.Text = "lbDetectTime";
             // 
-            // Form1
+            // btnOpenVideoFile
+            // 
+            this.btnOpenVideoFile.Location = new System.Drawing.Point(637, 265);
+            this.btnOpenVideoFile.Name = "btnOpenVideoFile";
+            this.btnOpenVideoFile.Size = new System.Drawing.Size(102, 39);
+            this.btnOpenVideoFile.TabIndex = 4;
+            this.btnOpenVideoFile.Text = "Open video";
+            this.btnOpenVideoFile.UseVisualStyleBackColor = true;
+            this.btnOpenVideoFile.Click += new System.EventHandler(this.btnOpenVideoFile_Click);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lbDetectTime);
             this.Controls.Add(this.videoSourcePlayer);
+            this.Controls.Add(this.btnOpenVideoFile);
             this.Controls.Add(this.btnOpenVideo);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -203,6 +215,7 @@
         private System.Windows.Forms.Button btnOpenVideo;
         private AForge.Controls.VideoSourcePlayer videoSourcePlayer;
         private System.Windows.Forms.Label lbDetectTime;
+        private System.Windows.Forms.Button btnOpenVideoFile;
     }
 }
 
