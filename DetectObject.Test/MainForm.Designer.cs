@@ -44,6 +44,7 @@
             this.videoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
             this.lbDetectTime = new System.Windows.Forms.Label();
             this.btnOpenVideoFile = new System.Windows.Forms.Button();
+            this.lbCounting = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.yoloItemBindingSource)).BeginInit();
@@ -166,7 +167,7 @@
             // 
             // btnOpenVideoFile
             // 
-            this.btnOpenVideoFile.Location = new System.Drawing.Point(637, 265);
+            this.btnOpenVideoFile.Location = new System.Drawing.Point(640, 284);
             this.btnOpenVideoFile.Name = "btnOpenVideoFile";
             this.btnOpenVideoFile.Size = new System.Drawing.Size(102, 39);
             this.btnOpenVideoFile.TabIndex = 4;
@@ -174,11 +175,21 @@
             this.btnOpenVideoFile.UseVisualStyleBackColor = true;
             this.btnOpenVideoFile.Click += new System.EventHandler(this.btnOpenVideoFile_Click);
             // 
+            // lbCounting
+            // 
+            this.lbCounting.AutoSize = true;
+            this.lbCounting.Location = new System.Drawing.Point(637, 252);
+            this.lbCounting.Name = "lbCounting";
+            this.lbCounting.Size = new System.Drawing.Size(75, 17);
+            this.lbCounting.TabIndex = 7;
+            this.lbCounting.Text = "lbCounting";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbCounting);
             this.Controls.Add(this.lbDetectTime);
             this.Controls.Add(this.videoSourcePlayer);
             this.Controls.Add(this.btnOpenVideoFile);
@@ -216,6 +227,7 @@
         private AForge.Controls.VideoSourcePlayer videoSourcePlayer;
         private System.Windows.Forms.Label lbDetectTime;
         private System.Windows.Forms.Button btnOpenVideoFile;
+        private System.Windows.Forms.Label lbCounting;
     }
 }
 
