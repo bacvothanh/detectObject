@@ -29,7 +29,7 @@ namespace DetectObject.Test
             //yoloWrapper = new YoloWrapper(config);
 
             // version 3
-            yoloWrapper = new YoloWrapper("yolov3-tiny.cfg", "yolov3-tiny_600.weights", "yolo.names");
+            yoloWrapper = new YoloWrapper("yolov3-tiny.cfg", "yolov3-tiny_9000.weights", "yolo.names");
             _detectStopwatch = new Stopwatch();
         }
 
@@ -38,7 +38,7 @@ namespace DetectObject.Test
             pictureBox1.Visible = true;
             videoSourcePlayer.Visible = false;
             // open
-            using (OpenFileDialog ofd = new OpenFileDialog() {Filter = "PNG|*.png|JPEG|*.jpg"})
+            using (OpenFileDialog ofd = new OpenFileDialog())
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
@@ -55,7 +55,7 @@ namespace DetectObject.Test
                 var items = yoloWrapper.Detect(ms.ToArray());
                 yoloItemBindingSource.DataSource = items;
 
-                if (items.Any())
+                if (items!= null && items.Any())
                 {
                     // draw rectangles
                     var image = pictureBox1.Image;
@@ -64,6 +64,11 @@ namespace DetectObject.Test
                     graphic.DrawRectangles(new Pen(Brushes.Red, 5), rectangleFs);
 
                     pictureBox1.Image = image;
+                    ThreadHelper.SetText(this, lbDetectTime, $"{items.Count()} result");
+                }
+                else
+                {
+                    ThreadHelper.SetText(this, lbDetectTime, $"No result");
                 }
             }
         }
@@ -146,36 +151,36 @@ namespace DetectObject.Test
             //});
 
 
-            //#region draw
-            //if (DateTime.Now.Subtract(_flagTime).TotalMilliseconds < delayTime && _previousRectangleFs != null && _previousRectangleFs.Length > 0)
-            //{
-            //    var graphic = Graphics.FromImage(image);
-            //    graphic.DrawRectangles(new Pen(Brushes.Red, 5), _previousRectangleFs);
+            #region draw
+            if (DateTime.Now.Subtract(_flagTime).TotalMilliseconds < delayTime && _previousRectangleFs != null && _previousRectangleFs.Length > 0)
+            {
+                var graphic = Graphics.FromImage(image);
+                graphic.DrawRectangles(new Pen(Brushes.Red, 5), _previousRectangleFs);
 
-            //    return;
-            //}
+                return;
+            }
 
-            //_detectStopwatch.Start();
-            //using (var ms = new MemoryStream())
-            //{
-            //    _flagTime = DateTime.Now;
-            //    image.Save(ms, ImageFormat.Png);
-            //    var items = yoloWrapper.Detect(ms.ToArray());
+            _detectStopwatch.Start();
+            using (var ms = new MemoryStream())
+            {
+                _flagTime = DateTime.Now;
+                image.Save(ms, ImageFormat.Png);
+                var items = yoloWrapper.Detect(ms.ToArray());
 
-            //    var graphic = Graphics.FromImage(image);
-            //    _previousRectangleFs = items.Select(x => new RectangleF(x.X, x.Y, x.Width, x.Height)).ToArray();
-            //    if (_previousRectangleFs.Length > 0)
-            //    {
-            //        graphic.DrawRectangles(new Pen(Brushes.Red, 5), _previousRectangleFs);
-            //    }
-            //}
+                var graphic = Graphics.FromImage(image);
+                _previousRectangleFs = items.Select(x => new RectangleF(x.X, x.Y, x.Width, x.Height)).ToArray();
+                if (_previousRectangleFs.Length > 0)
+                {
+                    graphic.DrawRectangles(new Pen(Brushes.Red, 5), _previousRectangleFs);
+                }
+            }
 
-            //_detectStopwatch.Stop();
-            //ThreadHelper.SetText(this, lbDetectTime, $"Detect time: {_detectStopwatch.ElapsedMilliseconds}ms");
-            //_detectStopwatch.Reset();
+            _detectStopwatch.Stop();
+            ThreadHelper.SetText(this, lbDetectTime, $"Detect time: {_detectStopwatch.ElapsedMilliseconds}ms");
+            _detectStopwatch.Reset();
 
 
-            //#endregion
+            #endregion
         }
 
         // Close video source if it is running
