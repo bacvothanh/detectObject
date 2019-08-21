@@ -39,11 +39,8 @@
             this.heightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.yoloItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btnOpenVideo = new System.Windows.Forms.Button();
             this.videoSourcePlayer = new AForge.Controls.VideoSourcePlayer();
             this.lbDetectTime = new System.Windows.Forms.Label();
-            this.btnOpenVideoFile = new System.Windows.Forms.Button();
             this.lbCounting = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -71,10 +68,10 @@
             this.widthDataGridViewTextBoxColumn,
             this.heightDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.yoloItemBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 319);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 430);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(593, 119);
+            this.dataGridView1.Size = new System.Drawing.Size(827, 119);
             this.dataGridView1.TabIndex = 1;
             // 
             // typeDataGridViewTextBoxColumn
@@ -119,7 +116,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(637, 24);
+            this.button1.Location = new System.Drawing.Point(878, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(102, 33);
             this.button1.TabIndex = 2;
@@ -127,31 +124,11 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(637, 82);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 34);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Detect";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // btnOpenVideo
-            // 
-            this.btnOpenVideo.Location = new System.Drawing.Point(637, 157);
-            this.btnOpenVideo.Name = "btnOpenVideo";
-            this.btnOpenVideo.Size = new System.Drawing.Size(102, 39);
-            this.btnOpenVideo.TabIndex = 4;
-            this.btnOpenVideo.Text = "Open video";
-            this.btnOpenVideo.UseVisualStyleBackColor = true;
-            this.btnOpenVideo.Click += new System.EventHandler(this.btnOpenVideo_Click);
-            // 
             // videoSourcePlayer
             // 
             this.videoSourcePlayer.Location = new System.Drawing.Point(12, 12);
             this.videoSourcePlayer.Name = "videoSourcePlayer";
-            this.videoSourcePlayer.Size = new System.Drawing.Size(593, 292);
+            this.videoSourcePlayer.Size = new System.Drawing.Size(827, 412);
             this.videoSourcePlayer.TabIndex = 5;
             this.videoSourcePlayer.Text = "videoSourcePlayer1";
             this.videoSourcePlayer.VideoSource = null;
@@ -159,26 +136,16 @@
             // lbDetectTime
             // 
             this.lbDetectTime.AutoSize = true;
-            this.lbDetectTime.Location = new System.Drawing.Point(637, 218);
+            this.lbDetectTime.Location = new System.Drawing.Point(878, 206);
             this.lbDetectTime.Name = "lbDetectTime";
             this.lbDetectTime.Size = new System.Drawing.Size(91, 17);
             this.lbDetectTime.TabIndex = 6;
             this.lbDetectTime.Text = "lbDetectTime";
             // 
-            // btnOpenVideoFile
-            // 
-            this.btnOpenVideoFile.Location = new System.Drawing.Point(640, 284);
-            this.btnOpenVideoFile.Name = "btnOpenVideoFile";
-            this.btnOpenVideoFile.Size = new System.Drawing.Size(102, 39);
-            this.btnOpenVideoFile.TabIndex = 4;
-            this.btnOpenVideoFile.Text = "Open video";
-            this.btnOpenVideoFile.UseVisualStyleBackColor = true;
-            this.btnOpenVideoFile.Click += new System.EventHandler(this.btnOpenVideoFile_Click);
-            // 
             // lbCounting
             // 
             this.lbCounting.AutoSize = true;
-            this.lbCounting.Location = new System.Drawing.Point(637, 252);
+            this.lbCounting.Location = new System.Drawing.Point(878, 240);
             this.lbCounting.Name = "lbCounting";
             this.lbCounting.Size = new System.Drawing.Size(75, 17);
             this.lbCounting.TabIndex = 7;
@@ -188,13 +155,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(997, 552);
             this.Controls.Add(this.lbCounting);
             this.Controls.Add(this.lbDetectTime);
             this.Controls.Add(this.videoSourcePlayer);
-            this.Controls.Add(this.btnOpenVideoFile);
-            this.Controls.Add(this.btnOpenVideo);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.pictureBox1);
@@ -215,7 +179,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn confidenceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn xDataGridViewTextBoxColumn;
@@ -223,10 +186,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn widthDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn heightDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource yoloItemBindingSource;
-        private System.Windows.Forms.Button btnOpenVideo;
         private AForge.Controls.VideoSourcePlayer videoSourcePlayer;
         private System.Windows.Forms.Label lbDetectTime;
-        private System.Windows.Forms.Button btnOpenVideoFile;
         private System.Windows.Forms.Label lbCounting;
     }
 }
